@@ -4,20 +4,26 @@ using namespace std;
 
 int main()
 {
-    int Year = 0;
+    int X = 0;
+    int Y = 0;
 
-    cin >> Year;
+    cin >> X >> Y;
 
-    if (
-        ((Year % 4 == 0) && (Year % 100 != 0))
-        || (Year % 400 == 0)
-        )
+    if (X > 0 && Y > 0)
     {
         cout << 1 << endl;
     }
-    else
+    else if (X < 0 && Y > 0)
     {
-        cout << 0 << endl;
+        cout << 2 << endl;
+    }
+    else if (X < 0 && Y < 0)
+    {
+        cout << 3 << endl;
+    }
+    else if (X > 0 && Y < 0)
+    {
+        cout << 4 << endl;
     }
 
     return 0;
