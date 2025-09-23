@@ -4,10 +4,15 @@ using namespace std;
 
 int main()
 {
-    int Year = 0;
+    int A = 0;
+    int B = 0;
+    int C = 0;
 
-    cin >> Year;
-    cout << Year - (2541 - 1998) << endl;
+    cin >> A >> B >> C;
+    cout << (A + B) % C << endl;
+    cout << ((A % C) + (B % C)) % C << endl;
+    cout << (A * B) % C << endl;
+    cout << ((A % C) * (B % C)) % C << endl;
 
     return 0;
 }
