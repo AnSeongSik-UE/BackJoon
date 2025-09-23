@@ -4,15 +4,14 @@ using namespace std;
 
 int main()
 {
-    int A = 0;
-    int B = 0;
-    int C = 0;
+    int FirstLine = 0;
+    int SecondLine = 0;
 
-    cin >> A >> B >> C;
-    cout << (A + B) % C << endl;
-    cout << ((A % C) + (B % C)) % C << endl;
-    cout << (A * B) % C << endl;
-    cout << ((A % C) * (B % C)) % C << endl;
+    cin >> FirstLine >> SecondLine;
+    cout << FirstLine * (SecondLine % 10) << endl;
+    cout << FirstLine * ((SecondLine % 100) / 10) << endl;
+    cout << FirstLine * (SecondLine / 100) << endl;
+    cout << FirstLine * SecondLine << endl;
 
     return 0;
 }
