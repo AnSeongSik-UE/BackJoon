@@ -4,22 +4,20 @@ using namespace std;
 
 int main()
 {
-    int A = 0;
-    int B = 0;
+    int Year = 0;
 
-    cin >> A >> B;
+    cin >> Year;
 
-    if (A > B)
+    if (
+        ((Year % 4 == 0) && (Year % 100 != 0))
+        || (Year % 400 == 0)
+        )
     {
-        cout << ">" << endl;
-    }
-    else if (A < B)
-    {
-        cout << "<" << endl;
+        cout << 1 << endl;
     }
     else
     {
-        cout << "==" << endl;
+        cout << 0 << endl;
     }
 
     return 0;
