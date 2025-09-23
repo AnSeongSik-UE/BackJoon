@@ -8,8 +8,11 @@ int main()
     int B = 0;
 
     cin >> A >> B;
-    cout.precision(10);
+    cout << A + B << endl;
+    cout << A - B << endl;
+    cout << A * B << endl;
     cout << A / B << endl;
+    cout << A % B << endl;
 
     return 0;
 }
