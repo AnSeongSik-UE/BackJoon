@@ -4,27 +4,27 @@ using namespace std;
 
 int main()
 {
-    int X = 0;
-    int Y = 0;
+    int H = 0;
+    int M = 0;
 
-    cin >> X >> Y;
+    cin >> H >> M;
 
-    if (X > 0 && Y > 0)
+    M += 15;
+
+    if (M >= 60 )
     {
-        cout << 1 << endl;
+        M -= 60;
     }
-    else if (X < 0 && Y > 0)
+    else
     {
-        cout << 2 << endl;
+        H -= 1;
+        if (H == -1)
+        {
+            H = 23;
+        }
     }
-    else if (X < 0 && Y < 0)
-    {
-        cout << 3 << endl;
-    }
-    else if (X > 0 && Y < 0)
-    {
-        cout << 4 << endl;
-    }
+
+    cout << H << " " << M << endl;
 
     return 0;
 }
