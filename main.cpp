@@ -4,10 +4,10 @@ using namespace std;
 
 int main()
 {
-    char UserId[51] = { '\0', };
+    int Year = 0;
 
-    cin >> UserId;
-    cout << UserId << "??!" << endl;
+    cin >> Year;
+    cout << Year - (2541 - 1998) << endl;
 
     return 0;
 }
