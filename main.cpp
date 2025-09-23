@@ -4,11 +4,23 @@ using namespace std;
 
 int main()
 {
-    cout << "|\\_/|" << endl;
-    cout << "|q p|   /}" << endl;
-    cout << "( 0 )\"\"\"\\" << endl;
-    cout << "|\"^\"`    |" << endl;
-    cout << "||_/=\\\\__|" << endl;
+    int A = 0;
+    int B = 0;
+
+    cin >> A >> B;
+
+    if (A > B)
+    {
+        cout << ">" << endl;
+    }
+    else if (A < B)
+    {
+        cout << "<" << endl;
+    }
+    else
+    {
+        cout << "==" << endl;
+    }
 
     return 0;
 }
