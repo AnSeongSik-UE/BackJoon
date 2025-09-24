@@ -5,13 +5,28 @@ using namespace std;
 int main()
 {
     int Dices[3] = {0,};
+    int n = 3 - 1;
     int Double = 0;
     int Triple = 0;
     int Temp = 0;
 
     cin >> Dices[0] >> Dices[1] >> Dices[2];
+    while(n > 0)
+    {
+        // 오름차순 정렬
+        for (int i = 0; i < n; ++i)
+        {
+            if (Dices[i] > Dices[i + 1])
+            {
+                Temp = Dices[i];
+                Dices[i] = Dices[i + 1];
+                Dices[i + 1] = Temp;
+            }
+        }
+        --n;
+    }
 
-    // 오름차순 정렬
+    // 중복 체크
     for (int i = 0; i < 2; ++i)
     {
         if (Dices[i] == Dices[i + 1])
@@ -25,19 +40,7 @@ int main()
                 Triple = Dices[i];
             }
         }
-        if (Dices[i] > Dices[i + 1])
-        {
-            Temp = Dices[i];
-            Dices[i] = Dices[i + 1];
-            Dices[i + 1] = Temp;
-        }
     }
-
-    //// 중복 체크
-    //for (int i = 0; i < 2; ++i)
-    //{
-
-    //}
 
     if (Triple != 0)
     {
