@@ -4,27 +4,25 @@ using namespace std;
 
 int main()
 {
-    int H = 0;
-    int M = 0;
+    int Hour = 0;
+    int Minute = 0;
+    int CookTime = 0;
 
-    cin >> H >> M;
+    cin >> Hour >> Minute >> CookTime;
 
-    M += 15;
+    Minute += CookTime;
 
-    if (M >= 60 )
+    if (Minute >= 60 )
     {
-        M -= 60;
-    }
-    else
-    {
-        H -= 1;
-        if (H == -1)
+        Hour += Minute / 60;
+        Minute %= 60;
+        if (Hour >= 24)
         {
-            H = 23;
+            Hour %= 24;
         }
     }
 
-    cout << H << " " << M << endl;
+    cout << Hour << " " << Minute << endl;
 
     return 0;
 }
