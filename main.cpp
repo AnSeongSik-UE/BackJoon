@@ -4,15 +4,11 @@ using namespace std;
 
 int main()
 {
-	int N = 0;
-	int Result = 0;
-	cin >> N;
-
-	for (int i = 1; i <= N; ++i)
-	{
-		Result += i;
-	}
-	cout << Result << endl;
+	unsigned int Recipt = 0;
+	unsigned int Type = 0;
+	unsigned int Price = 0;
+	unsigned int Number = 0;
+	unsigned int TotalPrice = 0;
 
 	return 0;
 }
