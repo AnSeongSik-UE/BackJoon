@@ -4,15 +4,15 @@ using namespace std;
 
 int main()
 {
-	int T = 0;
-	int A = 0;
-	int B = 0;
-	cin >> T;
+	int N = 0;
+	int Result = 0;
+	cin >> N;
 
-	for (int i = 0; i < T; ++i)
+	for (int i = 1; i <= N; ++i)
 	{
-		cin >> A >> B;
-		cout << A + B << endl;
+		Result += i;
 	}
+	cout << Result << endl;
+
 	return 0;
 }
