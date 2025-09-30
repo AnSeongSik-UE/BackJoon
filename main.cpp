@@ -4,12 +4,15 @@ using namespace std;
 
 int main()
 {
-	int Value = 0;
-	cin >> Value;
+	int T = 0;
+	int A = 0;
+	int B = 0;
+	cin >> T;
 
-	for (int i = 0; i < 9; ++i)
+	for (int i = 0; i < T; ++i)
 	{
-		cout << Value << " * " << i + 1 << " = " << (Value * (i + 1)) << endl;
+		cin >> A >> B;
+		cout << A + B << endl;
 	}
 	return 0;
 }
