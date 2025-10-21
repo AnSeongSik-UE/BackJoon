@@ -12,9 +12,16 @@ int main()
 
 	for (int j = 0; j < Count; ++j)
 	{
-		for (int i = 0; i <= j; ++i)
+		for (int i = 0; i < Count; ++i)
 		{
-			cout << "*";
+			if ((i + j) < (Count - 1))
+			{
+				cout << " ";
+			}
+			else
+			{
+				cout << "*";
+			}
 		}
 		cout << "\n";
 	}
