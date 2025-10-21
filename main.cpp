@@ -6,24 +6,17 @@ int main()
 {
 	cin.tie(NULL);
 	cout.sync_with_stdio(false);
-	unsigned int Count = 0;
+	unsigned int A = 0;
+	unsigned int B = 0;
 
-	cin >> Count;
-
-	for (int j = 0; j < Count; ++j)
+	while (true)
 	{
-		for (int i = 0; i < Count; ++i)
+		cin >> A >> B;
+		if (A == 0 && B == 0)
 		{
-			if ((i + j) < (Count - 1))
-			{
-				cout << " ";
-			}
-			else
-			{
-				cout << "*";
-			}
+			break;
 		}
-		cout << "\n";
+		cout << A + B << "\n";
 	}
 
 	return 0;
