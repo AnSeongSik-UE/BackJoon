@@ -15,7 +15,7 @@ int main()
 	for (int i = 0; i < Count; ++i)
 	{
 		cin >> A >> B;
-		cout << "Case #" << i + 1 << ": " << A + B << "\n";
+		cout << "Case #" << i + 1 << ": " << A << " + " << B << " = " << A + B << "\n";
 	}
 
 	return 0;
