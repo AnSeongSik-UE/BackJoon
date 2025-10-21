@@ -4,15 +4,19 @@ using namespace std;
 
 int main()
 {
-	unsigned int N = 0;
+	cin.tie(NULL);
+	cout.sync_with_stdio(false);
+	unsigned int Count = 0;
+	unsigned int A = 0;
+	unsigned int B = 0;
 
-	cin >> N;
+	cin >> Count;
 
-	for (int i = 0; i < N/4; ++i)
+	for (int i = 0; i < Count; ++i)
 	{
-		cout << "long ";
+		cin >> A >> B;
+		cout << A + B << "\n";
 	}
-	cout << "int" << endl;
 
 	return 0;
 }
