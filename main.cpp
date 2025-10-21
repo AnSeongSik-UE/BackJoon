@@ -7,15 +7,16 @@ int main()
 	cin.tie(NULL);
 	cout.sync_with_stdio(false);
 	unsigned int Count = 0;
-	unsigned int A = 0;
-	unsigned int B = 0;
 
 	cin >> Count;
 
-	for (int i = 0; i < Count; ++i)
+	for (int j = 0; j < Count; ++j)
 	{
-		cin >> A >> B;
-		cout << "Case #" << i + 1 << ": " << A << " + " << B << " = " << A + B << "\n";
+		for (int i = 0; i <= j; ++i)
+		{
+			cout << "*";
+		}
+		cout << "\n";
 	}
 
 	return 0;
