@@ -9,14 +9,13 @@ int main()
 	unsigned int A = 0;
 	unsigned int B = 0;
 
-	while (true)
+	while (cin >> A >> B)
 	{
-		cin >> A >> B;
-		if (A == 0 && B == 0)
+		cout << A + B << "\n";
+		if (cin.eof())
 		{
 			break;
 		}
-		cout << A + B << "\n";
 	}
 
 	return 0;
