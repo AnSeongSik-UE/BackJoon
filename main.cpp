@@ -4,33 +4,15 @@ using namespace std;
 
 int main()
 {
-	unsigned int Recipt = 0;
-	unsigned int Type = 0;
-	unsigned int Price = 0;
-	unsigned int Number = 0;
-	unsigned int CalcuratedRecipt = 0;
+	unsigned int N = 0;
 
-	cin >> Recipt;
-	cin >> Type;
+	cin >> N;
 
-	for (int i = 0; i < Type; ++i)
+	for (int i = 0; i < N/4; ++i)
 	{
-		Price = 0;
-		Number = 0;
-
-		cin >> Price >> Number;
-
-		CalcuratedRecipt += (Price * Number);
+		cout << "long ";
 	}
-
-	if (CalcuratedRecipt == Recipt)
-	{
-		cout << "Yes" << endl;
-	}
-	else
-	{
-		cout << "No" << endl;
-	}
+	cout << "int" << endl;
 
 	return 0;
 }
