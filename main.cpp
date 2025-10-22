@@ -6,17 +6,29 @@ int main()
 {
 	cin.tie(NULL);
 	cout.sync_with_stdio(false);
-	unsigned int A = 0;
-	unsigned int B = 0;
+	unsigned int N = 0;
+	unsigned int Numbers[100] = { 0, };
+	unsigned int V = 0;
+	unsigned int Count = 0;
 
-	while (cin >> A >> B)
+	cin >> N;
+
+	for (int i = 0; i < N; ++i)
 	{
-		cout << A + B << "\n";
-		if (cin.eof())
+		cin >> Numbers[i];
+	}
+
+	cin >> V;
+
+	for (int i = 0; i < N; ++i)
+	{
+		if (Numbers[i] == V)
 		{
-			break;
+			Count++;
 		}
 	}
+
+	cout << Count << "\n";
 
 	return 0;
 }
