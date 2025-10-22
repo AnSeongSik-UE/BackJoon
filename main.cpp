@@ -4,31 +4,24 @@ using namespace std;
 
 int main()
 {
-	cin.tie(NULL);
+	std::cin.tie(NULL);
 	cout.sync_with_stdio(false);
 	unsigned int N = 0;
-	unsigned int Numbers[100] = { 0, };
-	unsigned int V = 0;
+	unsigned int X = 0;
+	unsigned int A = 0;
 	unsigned int Count = 0;
 
-	cin >> N;
+	std::cin >> N >> X;
 
 	for (int i = 0; i < N; ++i)
 	{
-		cin >> Numbers[i];
-	}
-
-	cin >> V;
-
-	for (int i = 0; i < N; ++i)
-	{
-		if (Numbers[i] == V)
+		std::cin >> A;
+		if (A < X)
 		{
-			Count++;
+			cout << A << " ";
 		}
 	}
-
-	cout << Count << "\n";
+	cout << "\n";
 
 	return 0;
 }
