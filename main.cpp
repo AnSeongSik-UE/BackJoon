@@ -5,19 +5,26 @@ int main()
 	std::cin.tie(NULL);
 	std::cout.sync_with_stdio(false);
 	unsigned int N = 0;
-	unsigned int BiggestNumber = 0;
-	unsigned int BiggestNumbersLocation = 0;
+	unsigned int M = 0;
+	unsigned int Baskets[101] = { 0, };
+	unsigned int StartNumber = 0;
+	unsigned int EndNumber = 0;
+	unsigned int InputNumber = 0;
 
-	for (int i = 0; i < 9; ++i)
+	std::cin >> N >> M;
+	for (int i = 1; i <= M; ++i)
 	{
-		std::cin >> N;
-		if (BiggestNumber < N)
+		std::cin >> StartNumber >> EndNumber >> InputNumber;
+		for (StartNumber; StartNumber <= EndNumber; ++StartNumber)
 		{
-			BiggestNumber = N;
-			BiggestNumbersLocation = i + 1;
+			Baskets[StartNumber] = InputNumber;
 		}
 	}
-	std::cout << BiggestNumber << "\n" << BiggestNumbersLocation << "\n";
+
+	for (int i = 1; i <= N; ++i)
+	{
+		std::cout << Baskets[i] << " ";
+	}
 
 	return 0;
 }
