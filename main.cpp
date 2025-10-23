@@ -7,18 +7,22 @@ int main()
 	unsigned int N = 0;
 	unsigned int M = 0;
 	unsigned int Baskets[101] = { 0, };
-	unsigned int StartNumber = 0;
-	unsigned int EndNumber = 0;
-	unsigned int InputNumber = 0;
+	unsigned int TargetNumber = 0;
+	unsigned int ChangeNumber = 0;
+	unsigned int Temp = 0;
 
 	std::cin >> N >> M;
+	for (int i = 1; i <= N; ++i)
+	{
+		Baskets[i] = i;
+	}
+
 	for (int i = 1; i <= M; ++i)
 	{
-		std::cin >> StartNumber >> EndNumber >> InputNumber;
-		for (StartNumber; StartNumber <= EndNumber; ++StartNumber)
-		{
-			Baskets[StartNumber] = InputNumber;
-		}
+		std::cin >> TargetNumber >> ChangeNumber;
+		Temp = Baskets[TargetNumber];
+		Baskets[TargetNumber] = Baskets[ChangeNumber];
+		Baskets[ChangeNumber] = Temp;
 	}
 
 	for (int i = 1; i <= N; ++i)
