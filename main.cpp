@@ -4,28 +4,24 @@ int main()
 {
 	std::cin.tie(NULL);
 	std::cout.sync_with_stdio(false);
-	bool ReceiveReport[30] = { false, };
-	unsigned int StudentNumber = 0;
-	unsigned int Count = 2;
+	unsigned int Number = 0;
+	unsigned int RemainderCount[42] = { 0, };
+	unsigned int Count = 0;
 
-	for (int i = 1; i <= 28; ++i)
+	for (int i = 0; i < 10; ++i)
 	{
-		std::cin >> StudentNumber;
-		ReceiveReport[StudentNumber] = true;
+		std::cin >> Number;
+		RemainderCount[Number % 42]++;
 	}
 
-	for (int i = 1; i <= 30; ++i)
+	for (int i = 0; i < 42; ++i)
 	{
-		if (!ReceiveReport[i])
+		if (RemainderCount[i] > 0)
 		{
-			std::cout << i << "\n";
-			Count--;
-		}
-		if (Count == 0)
-		{
-			break;
+			Count++;
 		}
 	}
+	std::cout << Count << "\n";
 
 	return 0;
 }
