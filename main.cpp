@@ -4,30 +4,27 @@ int main()
 {
 	std::cin.tie(NULL);
 	std::cout.sync_with_stdio(false);
-	unsigned int N = 0;
-	unsigned int M = 0;
-	unsigned int Baskets[101] = { 0, };
-	unsigned int TargetNumber = 0;
-	unsigned int ChangeNumber = 0;
-	unsigned int Temp = 0;
+	bool ReceiveReport[30] = { false, };
+	unsigned int StudentNumber = 0;
+	unsigned int Count = 2;
 
-	std::cin >> N >> M;
-	for (int i = 1; i <= N; ++i)
+	for (int i = 1; i <= 28; ++i)
 	{
-		Baskets[i] = i;
+		std::cin >> StudentNumber;
+		ReceiveReport[StudentNumber] = true;
 	}
 
-	for (int i = 1; i <= M; ++i)
+	for (int i = 1; i <= 30; ++i)
 	{
-		std::cin >> TargetNumber >> ChangeNumber;
-		Temp = Baskets[TargetNumber];
-		Baskets[TargetNumber] = Baskets[ChangeNumber];
-		Baskets[ChangeNumber] = Temp;
-	}
-
-	for (int i = 1; i <= N; ++i)
-	{
-		std::cout << Baskets[i] << " ";
+		if (!ReceiveReport[i])
+		{
+			std::cout << i << "\n";
+			Count--;
+		}
+		if (Count == 0)
+		{
+			break;
+		}
 	}
 
 	return 0;
