@@ -11,9 +11,9 @@ int main()
 	std::cin >> Count >>Numbers;
 	for (int i = 0; i < Count; ++i)
 	{
-		TotalNumber = (int)Numbers[i];
+		TotalNumber = atoi.Numbers[i];
 	}
-
+	atoi(Numbers[0]);
 	std::cout << TotalNumber;
 
 	return 0;
