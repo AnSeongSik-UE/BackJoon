@@ -8,13 +8,14 @@ int main()
 	std::string Numbers = "\0";
 	unsigned int TotalNumber = 0;
 
-	std::cin >> Count >>Numbers;
+	std::cin >> Count >> Numbers;
 	for (int i = 0; i < Count; ++i)
 	{
-		TotalNumber = atoi.Numbers[i];
+		TotalNumber += atoi(&Numbers.back());
+		Numbers.pop_back();
 	}
-	atoi(Numbers[0]);
-	std::cout << TotalNumber;
+
+	std::cout << TotalNumber << "\n";
 
 	return 0;
 }
