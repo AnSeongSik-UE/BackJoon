@@ -1,46 +1,53 @@
 #pragma once
 
-template<typename T>
 class FStack
 {
+protected:
+	int Data[100];
+	int Index;
+
 public:
 	FStack()
 	{
-
+		Data[100] = { 0, };
+		Index = 0;
 	}
 	virtual ~FStack()
 	{
 
 	}
 
-	void Push(T InData)
+	void Push(int InData)
 	{
-		Data = InData;
 		Index++;
+		Data[Index] = InData;
 	}
 
 	void Pop()
 	{
-
+		if(!Empty())
+		{
+			Data[Index] = 0;
+			Index--;
+		}
 	}
 
-	void Size()
+	int Size()
 	{
-
+		return Index;
 	}
 
-	void Swap()
+	//void Swap(FStack* RS)
+	//{
+	//}
+
+	int Top()
 	{
-
+		return Data[Index];
 	}
 
-	void Top()
+	bool Empty()
 	{
-
+		return Index == 0;
 	}
-
-protected:
-	int Index = 0;
-	T Data;
-	T* PreStack = nullptr;
 };
