@@ -1,5 +1,5 @@
 #include <iostream>
-//#include <stack>
+#include <stack>
 #include "Stack.h"
 
 int main()
@@ -7,13 +7,14 @@ int main()
 	
 	//std::stack<int>* a = new std::stack<int>;
 	//std::stack<int>* b = new std::stack<int>;
+	////int c[10] = { 0, };
 	//b->push(7);
 	//b->push(8);
 	//b->push(9);
 	//a->push(1);
-	//std::cout << a->top() << "\n";
+	////std::cout << a->top() << "\n";
 	//a->push(2);
-	//std::cout << a->size() << "\n";
+	////std::cout << a->size() << "\n";
 	//a->pop();
 	//std::cout << a->size() << "\n";
 	//std::cout << a->top() << "\n";
@@ -32,7 +33,8 @@ int main()
 	//delete a;
 	//delete b;
 
-	FStack a;
+	FStack<int> a;
+	FStack<int> b;
 	a.Push(1);
 	a.Push(2);
 	a.Push(3);
@@ -40,6 +42,7 @@ int main()
 	a.Push(100);
 	a.Push(200);
 	a.Pop();
+	a.Swap(&b);
 	std::cout << a.Top() << " " << a.Empty() << " " << a.Size() << "\n";
 
 	return 0;
