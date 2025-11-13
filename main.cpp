@@ -1,5 +1,5 @@
 #include <iostream>
-#include <stack>
+//#include <stack>
 #include "Stack.h"
 
 int main()
@@ -42,8 +42,13 @@ int main()
 	a.Push(100);
 	a.Push(200);
 	a.Pop();
-	a.Swap(&b);
+	//b.Push(9999);
+	//a.Swap(&b);
 	std::cout << a.Top() << " " << a.Empty() << " " << a.Size() << "\n";
+	std::cout << b.Top() << " " << b.Empty() << " " << b.Size() << "\n";
+	b = a;
+	std::cout << a.Top() << " " << a.Empty() << " " << a.Size() << "\n";
+	std::cout << b.Top() << " " << b.Empty() << " " << b.Size() << "\n";
 
 	return 0;
 }

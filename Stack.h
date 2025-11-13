@@ -18,11 +18,38 @@ public:
 	FStack()
 	{
 	}
+	FStack(const FStack& RS)
+	{
+		Index = RS.Index;
+		FNode<T>* RSReplection = RS.Node;
+		for (int i = 0; i < Index; ++i)
+		{
+			FNode<T>* NewNode = new FNode<T>;
+			NewNode = RSReplection;
+			NewNode->Data = RSReplection->Data;
+			NewNode->PreNode = RSReplection->PreNode;
+			if (i == 0)
+			{
+				Node = NewNode;
+			}
+			RSReplection = NewNode->PreNode;
+		}
+	}
 	virtual ~FStack()
 	{
+		//if (Node)
+		//{
+		//	delete Node;
+		//}
 	}
 
-	void Push(int InData)
+	//void operator=(const FStack& RS)
+	//{
+	//	this->Index = RS.Index;
+	//	this->Node = RS.Node;
+	//}
+
+	void Push(T InData)
 	{
 		FNode<T>* TempNode = Node;
 		Node = new FNode<T>;
@@ -47,21 +74,24 @@ public:
 		return Index;
 	}
 
-	void Swap(FStack* RS)
-	{
-		FStack* TempStack = this;
-		this = RS;
-		RS = TempStack;
-	}
+	//void Swap(FStack* RS)
+	//{
+	//	FStack* TempStack = this;
+	//	this = RS;
+	//	RS = TempStack;
+	//}
 
 	int Top()
 	{
-		return Node->Data;
+		if(Node)
+		{
+			return Node->Data;
+		}
+		return 0;
 	}
 
 	bool Empty()
 	{
 		return Index == 0;
 	}
-
 };
