@@ -12,27 +12,37 @@ class FStack
 {
 protected:
 	int Index = 0;
-	FNode<T>* Node = nullptr;
+	//FNode<T>* Node = nullptr;
 
 public:
+	FNode<T>* Node = nullptr;
 	FStack()
 	{
 	}
 	FStack(const FStack& RS)
 	{
 		Index = RS.Index;
+		FNode<T>* NewNode = new FNode<T>;
 		FNode<T>* RSReplection = RS.Node;
 		for (int i = 0; i < Index; ++i)
 		{
-			FNode<T>* NewNode = new FNode<T>;
-			NewNode = RSReplection;
+			if(i != 0)
+			{
+				NewNode = NewNode->PreNode;
+			}
+			//NewNode = RSReplection;
 			NewNode->Data = RSReplection->Data;
-			NewNode->PreNode = RSReplection->PreNode;
+			//NewNode->PreNode = RSReplection->PreNode;
+			NewNode->PreNode = new FNode<T>;
 			if (i == 0)
 			{
 				Node = NewNode;
 			}
-			RSReplection = NewNode->PreNode;
+			else if (i + 1 == Index)
+			{
+				NewNode->PreNode = nullptr;
+			}
+			RSReplection = RSReplection->PreNode;
 		}
 	}
 	virtual ~FStack()
@@ -43,11 +53,10 @@ public:
 		//}
 	}
 
-	//void operator=(const FStack& RS)
-	//{
-	//	this->Index = RS.Index;
-	//	this->Node = RS.Node;
-	//}
+	void operator=(const FStack& RS)
+	{
+		new FStack(RS);
+	}
 
 	void Push(T InData)
 	{

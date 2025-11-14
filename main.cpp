@@ -47,6 +47,7 @@ int main()
 	std::cout << a.Top() << " " << a.Empty() << " " << a.Size() << "\n";
 	std::cout << b.Top() << " " << b.Empty() << " " << b.Size() << "\n";
 	b = a;
+	b.Node->Data = 99;
 	std::cout << a.Top() << " " << a.Empty() << " " << a.Size() << "\n";
 	std::cout << b.Top() << " " << b.Empty() << " " << b.Size() << "\n";
 
