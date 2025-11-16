@@ -1,9 +1,11 @@
 #pragma once
 
+#include <iostream>
+
 template<typename T>
 struct FNode
 {
-	T Data = 0;
+	T Data;
 	FNode<T>* PreNode = nullptr;
 };
 
@@ -16,46 +18,27 @@ protected:
 
 public:
 	FNode<T>* Node = nullptr;
+
 	FStack()
 	{
 	}
-	FStack(const FStack& RS)
+	FStack(const FStack<T>& RS)
 	{
-		Index = RS.Index;
-		FNode<T>* NewNode = new FNode<T>;
-		FNode<T>* RSReplection = RS.Node;
-		for (int i = 0; i < Index; ++i)
-		{
-			if(i != 0)
-			{
-				NewNode = NewNode->PreNode;
-			}
-			//NewNode = RSReplection;
-			NewNode->Data = RSReplection->Data;
-			//NewNode->PreNode = RSReplection->PreNode;
-			NewNode->PreNode = new FNode<T>;
-			if (i == 0)
-			{
-				Node = NewNode;
-			}
-			else if (i + 1 == Index)
-			{
-				NewNode->PreNode = nullptr;
-			}
-			RSReplection = RSReplection->PreNode;
-		}
+		CopyFrom(RS);
 	}
 	virtual ~FStack()
 	{
-		//if (Node)
-		//{
-		//	delete Node;
-		//}
+		Clear();
 	}
 
-	void operator=(const FStack& RS)
+	FStack<T>& operator=(const FStack<T>& RS)
 	{
-		new FStack(RS);
+		if (this != &RS)
+		{
+			Clear();
+			CopyFrom(RS);
+		}
+		return *this;
 	}
 
 	void Push(T InData)
@@ -64,7 +47,7 @@ public:
 		Node = new FNode<T>;
 		Node->Data = InData;
 		Node->PreNode = TempNode;
-		Index++;
+		++Index;
 	}
 
 	void Pop()
@@ -74,7 +57,7 @@ public:
 			FNode<T>* TempNode = Node;
 			Node = Node->PreNode;
 			delete TempNode;
-			Index--;
+			--Index;
 		}
 	}
 
@@ -83,24 +66,60 @@ public:
 		return Index;
 	}
 
-	//void Swap(FStack* RS)
-	//{
-	//	FStack* TempStack = this;
-	//	this = RS;
-	//	RS = TempStack;
-	//}
+	void Swap(FStack<T>& RS)
+	{
+		FNode<T>* TempNode = Node;
+		Node = RS.Node;
+		RS.Node = TempNode;
 
-	int Top()
+		int TempIndex = Index;
+		Index = RS.Index;
+		RS.Index = TempIndex;
+	}
+
+	T Top()
 	{
 		if(Node)
 		{
 			return Node->Data;
 		}
-		return 0;
+		return NULL;
 	}
 
 	bool Empty()
 	{
 		return Index == 0;
+	}
+
+private:
+	void CopyFrom(const FStack<T>& RS)
+	{
+		FNode<T>* RSReplicant = RS.Node;
+		T* RSDatas = new T[RS.Index];
+
+		for (int i = 0; i < RS.Index; ++i)
+		{
+			RSDatas[i] = RSReplicant->Data;
+			if (RSReplicant->PreNode)
+			{
+				RSReplicant = RSReplicant->PreNode;
+			}
+		}
+		for (int i = 0; i < RS.Index; ++i)
+		{
+			Push(RSDatas[RS.Index - 1 - i]);
+		}
+
+		delete[] RSDatas;
+	}
+	void Clear()
+	{
+		while (Node)
+		{
+			FNode<T>* NextDeleteNode = Node->PreNode;
+			delete Node;
+			Node = NextDeleteNode;
+		}
+		Index = 0;
 	}
 };
