@@ -12,9 +12,23 @@ public:
 	Queue()
 	{
 	}
+	Queue(const Queue<T>& RHS)
+	{
+		Capacity = RHS.Capacity;
+		Datas = new T[Capacity];
+		for (int i = 0; i < RHS.SizeOfQ; ++i)
+		{
+			Datas[i] = RHS.Datas[i];
+			++LastIndex;
+			++SizeOfQ;
+		}
+	}
 	virtual ~Queue()
 	{
-
+		if (Datas)
+		{
+			delete[] Datas;
+		}
 	}
 
 	inline void Push(T Value)
@@ -66,9 +80,23 @@ public:
 	{
 		return SizeOfQ;
 	}
-	inline void Swap()
+	inline void Swap(Queue<T> &RHS)
 	{
+		Queue<T>* Temp = new Queue<T>;
+		Temp->Datas = this->Datas;
+		Temp->LastIndex = this->LastIndex;
+		Temp->Capacity = this->Capacity;
+		Temp->SizeOfQ = this->SizeOfQ;
 
+		this->Datas = RHS.Datas;
+		this->LastIndex = RHS.LastIndex;
+		this->Capacity = RHS.Capacity;
+		this->SizeOfQ = RHS.SizeOfQ;
+
+		RHS.Datas = Temp->Datas;
+		RHS.LastIndex = Temp->LastIndex;
+		RHS.Capacity = Temp->Capacity;
+		RHS.SizeOfQ = Temp->SizeOfQ;
 	}
 	inline T Front()
 	{
