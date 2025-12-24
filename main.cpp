@@ -17,19 +17,35 @@ int main()
 	//std::cout << a->front() << " " << a->back() << " " << a->size() << "\n";
 	//std::cout << b->front() << " " << b->back() << " " << b->size() << "\n";
 
-	Queue<char>* c = new Queue<char>;
-	Queue<char>* d = new Queue<char>;
-	c->Push(97);
-	c->Push(98);
-	c->Push(99);
-	std::cout << c->Front() << c->Back() << "\n";
-	d->Push(90);
-	d->Push(89);
-	d = c;
-	std::cout << d->Front() << d->Back() << "\n";
-	d->Push(88);
-	c->Pop();
-	c->Pop();
+	//Queue<char>* c = new Queue<char>;
+	//Queue<char>* d = new Queue<char>;
+	//c->Push(97);
+	//c->Push(98);
+	//c->Push(99);
+	//std::cout << c->Front() << c->Back() << "\n";
+	//d->Push(90);
+	//d->Push(89);
+	//d = c;
+	//std::cout << d->Front() << d->Back() << "\n";
+	//d->Push(88);
+	//c->Pop();
+	//c->Pop();
+
+	Queue<int> c;
+	Queue<int> d;
+
+	c.Push(1);
+	c.Push(2);
+	c.Push(4);
+	c.Push(7);
+
+	for (auto iter = c.begin();iter != c.end(); ++iter)
+	{
+		std::cout << *iter << "\n";
+	}
+	//for (auto Data : c)
+	//{
+	//}
 
 	return 0;
 }

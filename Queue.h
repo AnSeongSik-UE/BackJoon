@@ -14,13 +14,16 @@ public:
 	}
 	Queue(const Queue<T>& RHS)
 	{
+		SizeOfQ = RHS.SizeOfQ;
 		Capacity = RHS.Capacity;
-		Datas = new T[Capacity];
-		for (int i = 0; i < RHS.SizeOfQ; ++i)
+		LastIndex = (int)RHS.SizeOfQ - 1;
+		if(Capacity>0)
 		{
-			Datas[i] = RHS.Datas[i];
-			++LastIndex;
-			++SizeOfQ;
+			Datas = new T[Capacity];
+			for (int i = 0; i < RHS.SizeOfQ; ++i)
+			{
+				Datas[i] = RHS.Datas[i];
+			}
 		}
 	}
 	virtual ~Queue()
@@ -28,6 +31,7 @@ public:
 		if (Datas)
 		{
 			delete[] Datas;
+			Datas = nullptr;
 		}
 	}
 
@@ -35,15 +39,14 @@ public:
 	{
 		if (SizeOfQ >= Capacity)
 		{
-			if (Capacity == 0)
-			{
-				Capacity = 1;
-			}
-			Capacity *= 2;
+			Capacity = (Capacity == 0) ? 1 : Capacity * 2;
 			T* NewDatas = new T[Capacity];
-			memmove(NewDatas, Datas, SizeOfQ * sizeof(T));
-			if (Datas)
+			if(Datas)
 			{
+				for (size_t i = 0; i < SizeOfQ; ++i)
+				{
+					NewDatas[i] = Datas[i];
+				}
 				delete[] Datas;
 			}
 			Datas = NewDatas;
@@ -55,26 +58,20 @@ public:
 	}
 	inline T Pop()
 	{
-		if(Datas)
+		if(SizeOfQ>0)
 		{
 			T OutData = Datas[0];
-			--LastIndex;
+
+			for (size_t i = 0; i < SizeOfQ - 1; ++i)
+			{
+				Datas[i] = Datas[i + 1];
+			}
+
 			--SizeOfQ;
-			if (SizeOfQ > 0)
-			{
-				for (int i = 0; i < SizeOfQ; ++i)
-				{
-					Datas[i] = Datas[i + 1];
-				}
-				Datas[SizeOfQ] = NULL;
-			}
-			else
-			{
-				delete[] Datas;
-			}
+			--LastIndex;
 			return OutData;
 		}
-		return 0;
+		return T();
 	}
 	inline size_t Size()
 	{
@@ -82,28 +79,85 @@ public:
 	}
 	inline void Swap(Queue<T> &RHS)
 	{
-		Queue<T>* Temp = new Queue<T>;
-		Temp->Datas = this->Datas;
-		Temp->LastIndex = this->LastIndex;
-		Temp->Capacity = this->Capacity;
-		Temp->SizeOfQ = this->SizeOfQ;
+        T* tempDatas = this->Datas;
+        int tempLast = this->LastIndex;
+        size_t tempSize = this->SizeOfQ;
+        size_t tempCap = this->Capacity;
 
-		this->Datas = RHS.Datas;
-		this->LastIndex = RHS.LastIndex;
-		this->Capacity = RHS.Capacity;
-		this->SizeOfQ = RHS.SizeOfQ;
+        this->Datas = RHS.Datas;
+        this->LastIndex = RHS.LastIndex;
+        this->SizeOfQ = RHS.SizeOfQ;
+        this->Capacity = RHS.Capacity;
 
-		RHS.Datas = Temp->Datas;
-		RHS.LastIndex = Temp->LastIndex;
-		RHS.Capacity = Temp->Capacity;
-		RHS.SizeOfQ = Temp->SizeOfQ;
+        RHS.Datas = tempDatas;
+        RHS.LastIndex = tempLast;
+        RHS.SizeOfQ = tempSize;
+        RHS.Capacity = tempCap;
 	}
-	inline T Front()
+	inline T& Front()
 	{
-		return Datas ? Datas[0] : NULL;
+		return Datas[0];
 	}
-	inline T Back()
+	inline T& Back()
 	{
-		return Datas ? Datas[LastIndex] : NULL;
+		return Datas[LastIndex];
 	}
+
+	inline T* begin()
+	{
+		return Datas; // 첫 번째 원소의 주소
+	}
+
+	inline T* end()
+	{
+		return Datas + SizeOfQ; // 마지막 원소 다음의 주소 (Standard)
+	}
+
+	//inline T* begin()
+	//{
+	//	T* ReturnValue = nullptr;
+	//	if (Datas)
+	//	{
+	//		CurrentIndex = 0;
+	//		ReturnValue = Datas + (sizeof(T) * CurrentIndex);
+	//	}
+	//	return ReturnValue;
+	//}
+
+	//inline T* end()
+	//{
+	//	T* ReturnValue = nullptr;
+	//	if (Datas)
+	//	{
+	//		CurrentIndex = LastIndex;
+	//		ReturnValue = Datas + (sizeof(T) * CurrentIndex);
+	//	}
+	//	return ReturnValue;
+	//}
+
+	//inline T* operator++()
+	//{
+	//	T* ReturnValue = nullptr;
+
+	//	if (Datas + (sizeof(T) * CurrentIndex + 1) != nullptr)
+	//	{
+	//		ReturnValue = Datas + (sizeof(T) * CurrentIndex + 1);
+	//		CurrentIndex++;
+	//	}
+	//	return ReturnValue;
+	//}
+
+	//inline T& operator*()
+	//{
+	//	return Datas[CurrentIndex];
+	//}
+
+	//inline bool operator==(T* RHS)
+	//{
+	//	return (Datas + (sizeof(T) * CurrentIndex)) == RHS ? true : false;
+	//}
+	//inline bool operator!=(T* RHS)
+	//{
+	//	return (Datas + (sizeof(T) * CurrentIndex)) != RHS ? true : false;
+	//}
 };
